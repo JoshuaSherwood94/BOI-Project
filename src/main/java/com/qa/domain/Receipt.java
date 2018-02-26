@@ -9,11 +9,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
 
-public class Receipt {
+public class Receipt implements DomainEntity{
 	@Id
 	@Column(name="Receipt_Id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	@Size(max=45)
 	private String path;
 	@Size(max=20000)
@@ -30,59 +30,39 @@ public class Receipt {
 		this.transaction = transaction;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-
-
 
 	public String getPath() {
 		return path;
 	}
 
-
-
 	public String getText() {
 		return text;
 	}
-
-
 
 	public String getLocation() {
 		return location;
 	}
 
-
-
 	public Transaction getTransaction() {
 		return transaction;
 	}
-	
-
 
 	public void setPath(String path) {
 		this.path = path;
 	}
 
-
-
 	public void setText(String text) {
 		this.text = text;
 	}
-
-
 
 	public void setLocation(String location) {
 		this.location = location;
 	}
 
-
-
 	public void setTransaction(Transaction transaction) {
 		this.transaction = transaction;
 	}
-
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="transaction_id")
-	public int getTransId() {return transaction.getTransId();}
 }

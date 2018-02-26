@@ -19,18 +19,14 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 @Entity
-public class Transaction {
+public class Transaction implements DomainEntity{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Id @Column(name="transaction_id")
-	private int transId;
+	private Long transId;
 	@Column(name="transaction_name") @Size(max=45)
 	private String transName;
 	@Column(name="date")
 	private Calendar date;
-	@ManyToOne
-	@Column(name="Account_Id")
-	@ForeignKey(name="FK_Account")
-	private Account accnt;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="transaction_id")
@@ -41,15 +37,12 @@ public class Transaction {
 		
 	}
 
-	public Transaction(int transId, String transName, Calendar date, Account accnt) {
-		super();
-		this.transId = transId;
+	public Transaction(String transName, Calendar date) {
 		this.transName = transName;
 		this.date = date;
-		this.accnt = accnt;
 	}
 
-	public int getTransId() {
+	public Long getTransId() {
 		return transId;
 	}
 
@@ -61,14 +54,6 @@ public class Transaction {
 		return date;
 	}
 
-	public Account getAccnt() {
-		return accnt;
-	}
-
-	public void setTransId(int transId) {
-		this.transId = transId;
-	}
-
 	public void setTransName(String transName) {
 		this.transName = transName;
 	}
@@ -77,13 +62,8 @@ public class Transaction {
 		this.date = date;
 	}
 
-	public void setAccnt(Account accnt) {
-		this.accnt = accnt;
-	}
-
 	public void setReceipt(Receipt receipt) {
 		this.receipt = receipt;
 	}
-	
 	
 }
