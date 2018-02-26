@@ -1,5 +1,8 @@
 package com.qa.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Target;
@@ -25,10 +29,10 @@ public class Account implements DomainEntity {
 	@Size(max=10)
 	@Column(name="account_Type")
 	private String type;
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="idCustomer")
-	@Target(Customer.class)
-	private long customerRef;
+	
+	@OneToMany(fetch=FetchType.EAGER)
+	@JoinColumn(name="idTransaction")
+	private Set<Transaction> transRefs = new HashSet<>();
 
 	public Account(String accountDescription, String accountType, int customerID) {
 
@@ -57,14 +61,5 @@ public class Account implements DomainEntity {
 	public void setType(String type) {
 		this.type = type;
 	}
-
-	public long getcustomerRef() {
-		return customerRef;
-	}
-
-	public void setcustomerRef(int custoerRef) {
-		this.customerRef = custoerRef;
-	}
-
 
 }
