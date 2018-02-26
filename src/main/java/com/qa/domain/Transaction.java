@@ -63,7 +63,7 @@ public class Transaction implements DomainEntity{
 	}
 
 	public void setReceipt(Receipt receipt) {
-		this.receipt = receipt;
+		//this.receipt = receipt;
 	}
 	
 }

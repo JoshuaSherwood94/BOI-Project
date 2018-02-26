@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Target;
+
 @Entity
 public class Account implements DomainEntity {
 
@@ -25,7 +27,8 @@ public class Account implements DomainEntity {
 	private String type;
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idCustomer")
-	private int customerRef;
+	@Target(Customer.class)
+	private long customerRef;
 
 	public Account(String accountDescription, String accountType, int customerID) {
 
@@ -55,7 +58,7 @@ public class Account implements DomainEntity {
 		this.type = type;
 	}
 
-	public int getcustomerRef() {
+	public long getcustomerRef() {
 		return customerRef;
 	}
 

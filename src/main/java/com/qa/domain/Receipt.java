@@ -1,14 +1,18 @@
 package com.qa.domain;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Target;
+
+@Entity
 public class Receipt implements DomainEntity{
 	@Id
 	@Column(name="Receipt_Id")
@@ -21,13 +25,16 @@ public class Receipt implements DomainEntity{
 	@Size(max=45)
 	private String location;
 
-	private Transaction transaction;
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="transaction_id")
+	@Target(Transaction.class)
+	private long transactionID;
 	
-	public Receipt(String path, String text, String location, Transaction transaction) {
+	public Receipt(String path, String text, String location, long transaction) {
 		this.path = path;
 		this.text = text;
 		this.location = location;
-		this.transaction = transaction;
+		this.transactionID = transaction;
 	}
 
 	public Long getId() {
@@ -46,8 +53,8 @@ public class Receipt implements DomainEntity{
 		return location;
 	}
 
-	public Transaction getTransaction() {
-		return transaction;
+	public long getTransactionID() {
+		return transactionID;
 	}
 
 	public void setPath(String path) {
@@ -62,7 +69,7 @@ public class Receipt implements DomainEntity{
 		this.location = location;
 	}
 
-	public void setTransaction(Transaction transaction) {
-		this.transaction = transaction;
+	public void setTransactionID(long transactionID) {
+		this.transactionID = transactionID;
 	}
 }
