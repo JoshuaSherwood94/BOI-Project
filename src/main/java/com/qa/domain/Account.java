@@ -16,26 +16,26 @@ public class Account implements DomainEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name="idAccount")
-	private int id;
+	private Long id;
 	@Size(max=500)
 	@Column(name="account_Desc")
 	private String description;
 	@Size(max=10)
 	@Column(name="account_Type")
 	private String type;
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idCustomer")
-	private int custoerRef;
+	private int customerRef;
 
 	public Account(int accountID, String accountDescription, String accountType, int customerID) {
 
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -57,14 +57,12 @@ public class Account implements DomainEntity {
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idCustomer")
-	public int getCustoerRef() {
-		return custoerRef;
+	public int getcustomerRef() {
+		return customerRef;
 	}
 
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="idCustomer")
-	public void setCustoerRef(int custoerRef) {
-		this.custoerRef = custoerRef;
+	public void setcustomerRef(int custoerRef) {
+		this.customerRef = custoerRef;
 	}
 
 
