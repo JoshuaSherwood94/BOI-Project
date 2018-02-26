@@ -18,15 +18,59 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>helloworld-rs</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/mainCSS.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
+<script src="js_ajax/mainJS.js"></script>
+
+<title>The Reciept Book</title>
 </head>
 <body>
+  <div class="container-fluid">
 
-    <p>Choose between <em>JSON</em> or <em>XML</em>:
 
-    <ul>
-    	<li><a href="rest/json">JSON</a></li>
-        <li><a href="rest/xml">XML</a></li>
-    </ul>
+<div  class="row">
+  <div class=" col-sm-11">
+    <div  id="signOutDisplay" class="alert alert-info alert-dismissible col-sm-6">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>You are about to Sign Out of the Application</strong>
+    </div>
+  </div>
+
+<button type="button" id="signOutButton" class="btn btn-info col-sm-1">Sign Out <br><i class="material-icons">exit_to_app</i></button>
+</div>
+<div  class="row">
+<div  id="mainContent"class=" col-sm-11">
+  <div  class="row">
+    <button type="button" id="Account1" class="btn btn-info col-sm-1"> Account:<span id="accountNumber1">1</button>
+    <button type="button" id="Account2" class="btn btn-info col-sm-1"> Account:<span id="accountNumber2">2</button>
+    <button type="button" id="Account2" class="btn btn-info col-sm-1"> Account:<span id="accountNumber3">3</button>
+  </div>
+
+  <div class="row">
+
+  </div>
+
+</div>
+</div>
+
+  
+
+
+    <div id="output">
+      <h1>Output</h1>
+    </div>
+
+    <div>
+    	<form id="receiptUpload" action="">
+    	<input type="file">
+    	</form>
+    </div>
+
+</div>
 </body>
 </html>
