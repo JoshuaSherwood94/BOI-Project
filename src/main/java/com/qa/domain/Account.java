@@ -1,5 +1,6 @@
 package com.qa.domain;
 
+import javax.inject.Inject;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Target;
 
 @Entity
 public class Account implements DomainEntity {
@@ -23,9 +26,11 @@ public class Account implements DomainEntity {
 	@Size(max=10)
 	@Column(name="account_Type")
 	private String type;
+	@Inject
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idCustomer")
-	private int customerRef;
+	@Target(Customer.class)
+	private long customerRef;
 
 	public Account(String accountDescription, String accountType, int customerID) {
 
@@ -55,11 +60,11 @@ public class Account implements DomainEntity {
 		this.type = type;
 	}
 
-	public int getcustomerRef() {
+	public Long getcustomerRef() {
 		return customerRef;
 	}
 
-	public void setcustomerRef(int custoerRef) {
+	public void setcustomerRef(Long custoerRef) {
 		this.customerRef = custoerRef;
 	}
 
