@@ -55,8 +55,6 @@ public class Account implements DomainEntity {
 		this.type = type;
 	}
 
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="idCustomer")
 	public int getcustomerRef() {
 		return customerRef;
 	}
