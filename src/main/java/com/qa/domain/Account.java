@@ -27,7 +27,7 @@ public class Account implements DomainEntity {
 	@JoinColumn(name="idCustomer")
 	private int customerRef;
 
-	public Account(int accountID, String accountDescription, String accountType, int customerID) {
+	public Account(String accountDescription, String accountType, int customerID) {
 
 	}
 
