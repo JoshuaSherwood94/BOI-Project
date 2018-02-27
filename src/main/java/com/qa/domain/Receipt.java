@@ -19,7 +19,6 @@ import org.hibernate.annotations.Target;
 @Entity
 public class Receipt implements DomainEntity{
 	@Id
-	@Column(name="Receipt_Id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	@Size(max=45)
@@ -29,6 +28,9 @@ public class Receipt implements DomainEntity{
 	@Size(max=45)
 	private String location;
 	
+	public Receipt(){
+		
+	}
 	public Receipt(String path, String text, String location) {
 		this.path = path;
 		this.text = text;

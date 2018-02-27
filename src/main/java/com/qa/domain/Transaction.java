@@ -31,9 +31,9 @@ public class Transaction implements DomainEntity{
 	private Calendar date;
 	
 	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-	@JoinColumn(name="transaction_id")
-	@NotFound(action=NotFoundAction.IGNORE)
-	private Receipt receipt;
+	//@JoinColumn(name="transaction_id")
+	//@NotFound(action=NotFoundAction.IGNORE)
+	private Receipt receipt = new Receipt();
 	
 	public Transaction() {
 		
