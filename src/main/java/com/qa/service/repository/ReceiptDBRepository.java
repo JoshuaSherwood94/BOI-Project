@@ -31,9 +31,9 @@ public class ReceiptDBRepository implements Repository {
 
 	public String getEntity(Long id) {
 		LOGGER.info("ReceiptDBRepository getEntity");
-		Query query = manager.createQuery("Select a FROM receipt a where id = :id");
+		Query query = manager.createQuery("Select a FROM Receipt a where transaction_id = :id");
 		query.setParameter("id", id);
-		Receipt receipt = (Receipt) query.getResultList();
+		Receipt receipt = (Receipt) query.getResultList().get(0);
 		return util.getJSONForObject(receipt);
 	}
 
