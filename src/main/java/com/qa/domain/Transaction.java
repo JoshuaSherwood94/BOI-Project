@@ -1,6 +1,7 @@
 package com.qa.domain;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cascade;
@@ -27,8 +30,8 @@ public class Transaction implements DomainEntity{
 	private Long transId;
 	@Column(name="transaction_name") @Size(max=45)
 	private String transName;
-	@Column(name="date")
-	private Calendar date;
+	@Column(name="date")@Temporal(TemporalType.DATE)
+	private Date date;
 	@Column(name="amount")
 	private Double amount;
 	
@@ -41,7 +44,7 @@ public class Transaction implements DomainEntity{
 		
 	}
 
-	public Transaction(String transName, Calendar date, double amount) {
+	public Transaction(String transName, Date date, double amount) {
 		this.transName = transName;
 		this.date = date;
 		this.amount = amount;
@@ -55,7 +58,7 @@ public class Transaction implements DomainEntity{
 		return transName;
 	}
 
-	public Calendar getDate() {
+	public Date getDate() {
 		return date;
 	}
 
@@ -63,7 +66,7 @@ public class Transaction implements DomainEntity{
 		this.transName = transName;
 	}
 
-	public void setDate(Calendar date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
