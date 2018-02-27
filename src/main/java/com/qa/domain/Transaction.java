@@ -1,6 +1,9 @@
 package com.qa.domain;
 
 import java.util.Calendar;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,6 +17,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cascade;
@@ -27,21 +32,26 @@ public class Transaction implements DomainEntity{
 	private Long transId;
 	@Column(name="transaction_name") @Size(max=45)
 	private String transName;
-	@Column(name="date")
-	private Calendar date;
+	@Column(name="date")@Temporal(TemporalType.DATE)
+	private Date date;
+	@Column(name="amount")
+	private Double amount;
 	
-	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	//@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	//@JoinColumn(name="transaction_id")
 	//@NotFound(action=NotFoundAction.IGNORE)
-	private Receipt receipt = new Receipt();
+	@OneToMany(fetch=FetchType.EAGER)
+	@JoinColumn(name="transaction_id")
+	private Set<Receipt> receipts = new HashSet<Receipt>();
 	
 	public Transaction() {
 		
 	}
 
-	public Transaction(String transName, Calendar date) {
+	public Transaction(String transName, Date date, double amount) {
 		this.transName = transName;
 		this.date = date;
+		this.amount = amount;
 	}
 
 	public Long getTransId() {
@@ -52,7 +62,7 @@ public class Transaction implements DomainEntity{
 		return transName;
 	}
 
-	public Calendar getDate() {
+	public Date getDate() {
 		return date;
 	}
 
@@ -60,7 +70,7 @@ public class Transaction implements DomainEntity{
 		this.transName = transName;
 	}
 
-	public void setDate(Calendar date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

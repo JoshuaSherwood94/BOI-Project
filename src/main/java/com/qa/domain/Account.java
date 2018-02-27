@@ -10,11 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.Target;
+import org.hibernate.annotations.ForeignKey;
 
 @Entity
 public class Account implements DomainEntity {
@@ -31,11 +30,19 @@ public class Account implements DomainEntity {
 	private String type;
 	
 	@OneToMany(fetch=FetchType.EAGER)
-	@JoinColumn(name="idAcount")
+	@JoinColumn(name="idAccount")
 	private Set<Transaction> transRefs = new HashSet<>();
+	
+	@Column(name="idCustomer")
+	long custID;
+	
+	
+	public Account() {}
 
-	public Account(String accountDescription, String accountType, int customerID) {
-
+	public Account(String accountDescription, String accountType, long customerID) {
+			this.description = accountDescription;
+			this.type = accountType;
+			custID = customerID;
 	}
 
 	public Long getId() {
