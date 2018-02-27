@@ -18,21 +18,21 @@ public class ReceiptEndpoint {
 	@GET
 	@Produces({ "application/json" })
 	public String getReceipt(@PathParam("i") Long id) {
-		return service.getReceipt(id);
+		return service.getEntity(id);
 	}
 
 	@Path("/json")
 	@POST
 	@Produces({ "application/json" })
 	public String addReceipt(String receipt) {
-		return service.createReceipt(receipt);
+		return service.createEntity(receipt);
 	}
 
 	@Path("/json/{i}")
 	@DELETE
 	@Produces({ "application/json" })
 	public String deleteAccount(@PathParam("i") Long id) {
-		return service.deleteReceipt(id);
+		return service.removeEntity(id);
 
 	}
 

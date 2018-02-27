@@ -19,21 +19,21 @@ public class TransactionEndpoint {
 	@GET
 	@Produces({ "application/json" })
 	public String getAllATransactionsFor(@PathParam("i")Long id) {
-		return service.getAllTransactionsFor(id);
+		return service.getAllFor(id);
 	}
 
 	@Path("/json")
 	@POST
 	@Produces({ "application/json" })
 	public String addAccount(String transaction) {
-		return service.createTransaction(transaction);
+		return service.createEntity(transaction);
 	}
 
 	@Path("/json/{i}")
 	@DELETE
 	@Produces({ "application/json" })
 	public String deleteAccount(@PathParam("id") Long id) {
-		return service.deleteTransaction(id);
+		return service.removeEntity(id);
 
 	}
 
