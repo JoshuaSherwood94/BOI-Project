@@ -61,7 +61,7 @@ public class ReceiptItemsDBRepository implements Repository{
 
 	@Override
 	public String getAllFor(long id) {
-		Query query = manager.createQuery("Select a FROM receiptItems a where receipt.receiptItemsRefs.id = :id");
+		Query query = manager.createQuery("Select a FROM receiptItems a where receipt.id = :id");
 		query.setParameter("id", id);
 		Collection<ReceiptItems> receiptItems = (Collection<ReceiptItems>) query.getResultList();
 		return util.getJSONForObject(receiptItems);
