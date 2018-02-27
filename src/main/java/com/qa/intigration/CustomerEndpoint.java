@@ -19,6 +19,13 @@ public class CustomerEndpoint {
 
 	@Inject
 	private CustomerService service;
+	
+	@Path("/json/{i}")
+	@GET
+	@Produces({ "application/json" })
+	public String getAccount(@PathParam("i") Long id) {
+		return service.getEntity(id);
+	}
 
 	@Path("/json")
 	@GET
