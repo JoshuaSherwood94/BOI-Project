@@ -8,7 +8,7 @@ import com.qa.service.repository.TransactionDBRepository;
 public class TransactionServiceImpl implements Service{
 
 	@Inject
-	DBRepository repo;
+	private TransactionDBRepository repo;
 	
 	public String getAllTransactionsFor(Long id){
 		return repo.getAllFor(id);
