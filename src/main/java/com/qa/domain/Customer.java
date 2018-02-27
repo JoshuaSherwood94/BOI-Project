@@ -41,6 +41,8 @@ public class Customer implements DomainEntity {
 	@OneToMany(fetch=FetchType.EAGER)
 	@JoinColumn(name="idCustomer")
 	private Set<Account> accntRefs = new HashSet<>();
+	
+	public Customer() {}
 
 	public Customer(String customerName, String userName, String email, String password) {
 		this.customerName = customerName;
