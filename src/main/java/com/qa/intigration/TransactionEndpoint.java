@@ -28,7 +28,7 @@ public class TransactionEndpoint {
 	public String addTransaction(String transaction) {
 		return service.createEntity(transaction);
 	}
-
+	//comment
 	@Path("/json/{i}")
 	@DELETE
 	@Produces({ "application/json" })
