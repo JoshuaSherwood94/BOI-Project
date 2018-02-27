@@ -23,7 +23,13 @@ var $mainCustomerId=1;
 	           
 	           //get each transaction
 	           $.each(result[account_id].transRefs,function(key,value){
-	        	   console.log(value);
+	         var $row ='<div class = "row dataHeader2">'+
+            '<span class = "col-sm-2"> '+value.date+'  </span>'+
+            '<span class = "col-sm-4">'+value.transName+'</span>'+
+            '<span class = "col-sm-2"> '+value.amount+' </span>'+
+            '<button type="button" class="btn btn-info btn-default col-sm-2" data-toggle="modal" data-target="#TransactionOne " data-reciept="'+value.receipts.length+'">Receipt </button>' +
+            '</div>';
+	         $('#datatable').append($row);
 	        	   });
 	       }
 	  });

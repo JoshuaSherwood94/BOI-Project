@@ -1,0 +1,20 @@
+.btn-xl {
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    width:20%;
+}
+
+.btn-x2 {
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    width:70%;
+}
+
+.btn-x3 {
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    width:100%;
+}
