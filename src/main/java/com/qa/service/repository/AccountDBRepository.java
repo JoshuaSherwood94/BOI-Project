@@ -81,7 +81,7 @@ public class AccountDBRepository implements Repository {
 	public String getAllFor(long id) {
 		
 		LOGGER.info("AccountRepository getAllAccounts");
-		Query query = manager.createQuery("Select a FROM Account where idAccount = '"+ id +"'a");
+		Query query = manager.createQuery("Select a FROM Account a where idcustomer ="+ id );
 		Collection<Account> accounts = (Collection<Account>) query.getResultList();
 		return util.getJSONForObject(accounts);
 		

@@ -24,7 +24,7 @@ public class AccountEndpoint {
 	@GET
 	@Produces({ "application/json" })
 	public String getAccount(@PathParam("i") Long id) {
-		return service.getEntity(id);
+		return service.getAllFor(id);
 	}
 
 	@Path("/json")
