@@ -32,7 +32,7 @@ public class TransactionEndpoint {
 	@Path("/json/{i}")
 	@DELETE
 	@Produces({ "application/json" })
-	public String deleteTransaction(@PathParam("id") Long id) {
+	public String deleteTransaction(@PathParam("i") Long id) {
 		return service.removeEntity(id);
 
 	}
