@@ -46,7 +46,7 @@ public class TransactionDBRepository implements Repository{
 	@Override
 	public String get(long id) {
 		LOGGER.info("TransactionDBRepository getEntity");
-		Query query = manager.createQuery("Select a FROM transaction a where a.transaction_id = :id");
+		Query query = manager.createQuery("Select a FROM transaction a where transaction_id = :id");
 		query.setParameter("id", id);
 		Transaction transaction = (Transaction) query.getResultList();
 		return util.getJSONForObject(transaction);
@@ -74,7 +74,7 @@ public class TransactionDBRepository implements Repository{
 	@Override
 	public String getAllFor(long id) {
 		LOGGER.info("TransactionDBRepository getAllFor");
-		Query query = manager.createQuery("Select a FROM transaction a where a.idacount = :id");
+		Query query = manager.createQuery("Select a FROM transaction a where idacount = :id");
 		query.setParameter("id", id);
 		Collection<Transaction> transactions = (Collection<Transaction>) query.getResultList();
 		return util.getJSONForObject(transactions);
