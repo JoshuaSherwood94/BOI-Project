@@ -31,7 +31,7 @@ public class ReceiptDBRepository implements Repository {
 
 	public String getEntity(Long id) {
 		LOGGER.info("ReceiptDBRepository getEntity");
-		Query query = manager.createQuery("Select a FROM receipt a where a.id = :id");
+		Query query = manager.createQuery("Select a FROM receipt a where id = :id");
 		query.setParameter("id", id);
 		Receipt receipt = (Receipt) query.getResultList();
 		return util.getJSONForObject(receipt);
@@ -71,7 +71,7 @@ public class ReceiptDBRepository implements Repository {
 	@Override
 	public String getAllFor(long id) {
 		LOGGER.info("ReceiptDBRepository getAllFor");
-		Query query = manager.createQuery("Select a FROM receipt a where transaction.receipt.id = :id");
+		Query query = manager.createQuery("Select a FROM receipt a where receipt.id = :id");
 		query.setParameter("id", id);
 		Collection<Receipt> receipt = (Collection<Receipt>) query.getResultList();
 		return util.getJSONForObject(receipt);
