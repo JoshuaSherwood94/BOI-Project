@@ -31,7 +31,7 @@ public class ReceiptEndpoint {
 	@Path("/json/{i}")
 	@DELETE
 	@Produces({ "application/json" })
-	public String deleteAccount(@PathParam("i") Long id) {
+	public String deleteReceipt(@PathParam("i") Long id) {
 		return service.removeEntity(id);
 
 	}

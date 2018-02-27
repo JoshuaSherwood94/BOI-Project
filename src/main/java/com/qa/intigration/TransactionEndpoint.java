@@ -25,14 +25,14 @@ public class TransactionEndpoint {
 	@Path("/json")
 	@POST
 	@Produces({ "application/json" })
-	public String addAccount(String transaction) {
+	public String addTransaction(String transaction) {
 		return service.createEntity(transaction);
 	}
 
 	@Path("/json/{i}")
 	@DELETE
 	@Produces({ "application/json" })
-	public String deleteAccount(@PathParam("id") Long id) {
+	public String deleteTransaction(@PathParam("id") Long id) {
 		return service.removeEntity(id);
 
 	}
