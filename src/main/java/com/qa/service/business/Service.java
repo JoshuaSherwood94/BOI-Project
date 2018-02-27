@@ -2,8 +2,6 @@ package com.qa.service.business;
 
 import java.util.Set;
 
-import com.qa.domain.DomainEntity;
-
 public interface Service {
 	
 	public String getAll();
