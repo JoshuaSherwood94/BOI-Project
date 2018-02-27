@@ -1,5 +1,8 @@
 package com.qa.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
 
@@ -18,7 +22,7 @@ import org.hibernate.annotations.Target;
 
 @Entity
 public class Receipt implements DomainEntity{
-	@Id
+	@Id @Column(name="receipt_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	@Size(max=45)
@@ -27,6 +31,11 @@ public class Receipt implements DomainEntity{
 	private String text;
 	@Size(max=45)
 	private String location;
+	
+	@OneToMany(fetch=FetchType.EAGER)
+	@JoinColumn(name="receipt_id")
+	private Set<ReceiptItems> receiptItemsRefs = new HashSet<>();
+
 	
 	public Receipt(){
 		
