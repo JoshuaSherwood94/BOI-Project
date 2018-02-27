@@ -29,6 +29,8 @@ public class Transaction implements DomainEntity{
 	private String transName;
 	@Column(name="date")
 	private Calendar date;
+	@Column(name="amount")
+	private Double amount;
 	
 	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	//@JoinColumn(name="transaction_id")
@@ -39,9 +41,10 @@ public class Transaction implements DomainEntity{
 		
 	}
 
-	public Transaction(String transName, Calendar date) {
+	public Transaction(String transName, Calendar date, double amount) {
 		this.transName = transName;
 		this.date = date;
+		this.amount = amount;
 	}
 
 	public Long getTransId() {

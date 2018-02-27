@@ -4,14 +4,14 @@ import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
 
-import com.qa.service.repository.CustomerRepository;
+import com.qa.service.repository.CustomerDBRepository;
 
 public class CustomerService implements Service {
 	
 	private static final Logger LOGGER = Logger.getLogger(CustomerService.class);
 
 	@Inject
-	private CustomerRepository repo;
+	private CustomerDBRepository repo;
 
 	@Override
 	public String getAll() {

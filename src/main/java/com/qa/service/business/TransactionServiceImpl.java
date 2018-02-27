@@ -2,7 +2,6 @@ package com.qa.service.business;
 
 import javax.inject.Inject;
 
-import com.qa.service.repository.DBRepository;
 import com.qa.service.repository.TransactionDBRepository;
 
 public class TransactionServiceImpl implements Service{
@@ -16,23 +15,22 @@ public class TransactionServiceImpl implements Service{
 
 	@Override
 	public String getAll() {
-		// TODO Auto-generated method stub
-		return "";
+		return repo.getAll();
 	}
 
 	@Override
 	public String getEntity(long id) {
-		return repo.getEntity(id);
+		return repo.get(id);
 	}
 
 	@Override
 	public String createEntity(String ent) {
-		return repo.create(ent);
+		return repo.add(ent);
 	}
 
 	@Override
 	public String removeEntity(Long id) {
-		return repo.delete(id);
+		return repo.remove(id);
 	}
 
 	@Override
