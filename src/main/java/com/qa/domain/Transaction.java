@@ -2,6 +2,8 @@ package com.qa.domain;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -35,10 +37,12 @@ public class Transaction implements DomainEntity{
 	@Column(name="amount")
 	private Double amount;
 	
-	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	//@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	//@JoinColumn(name="transaction_id")
 	//@NotFound(action=NotFoundAction.IGNORE)
-	private Receipt receipt = new Receipt();
+	@OneToMany(fetch=FetchType.EAGER)
+	@JoinColumn(name="transaction_id")
+	private Set<Receipt> receipts = new HashSet<Receipt>();
 	
 	public Transaction() {
 		
