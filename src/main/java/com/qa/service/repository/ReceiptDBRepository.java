@@ -19,9 +19,9 @@ import com.qa.util.JSONUtil;
 
 @Transactional(SUPPORTS)
 @Default
-public class ReceiptDBRepository implements DBRepository {
+public class ReceiptDBRepository implements Repository {
 
-	private static final Logger LOGGER = Logger.getLogger(DBRepository.class);
+	private static final Logger LOGGER = Logger.getLogger(ReceiptDBRepository.class);
 
 	@PersistenceContext(unitName="primary")
 	private EntityManager manager;
@@ -44,26 +44,15 @@ public class ReceiptDBRepository implements DBRepository {
 	}
 
 	@Override
-	public String getAllFor(Long id) {
-		LOGGER.info("ReceiptDBRepository getAllFor");
-		Query query = manager.createQuery("Select a FROM receipt a where transaction.receipt.id = :id");
-		query.setParameter("id", id);
-		Collection<Receipt> receipt = (Collection<Receipt>) query.getResultList();
-		return util.getJSONForObject(receipt);
+	public String get(long id) {
+		LOGGER.info("ReceiptDBRepository findTransaction");
+		return util.getJSONForObject(manager.find(Receipt.class, id));
 	}
 
 	@Override
-	public String create(String receipt) {
-		LOGGER.info("ReceiptDBRepository createReceipt");
-		Receipt newReceipt = util.getObjectForJSON(receipt, Receipt.class);
-		manager.persist(newReceipt);
-		return "{\"message\": \"receipt has been sucessfully added\"}";
-	}
-
-	@Override
-	public String delete(Long id) {
+	public String remove(long id) {
 		LOGGER.info("ReceiptDBRepository deleteReceipt");
-		Receipt receipt = findReceipt(id);
+		Receipt receipt = util.getObjectForJSON(get(id), Receipt.class);
 		if (receipt != null) {
 			manager.remove(receipt);
 			return "{\"message\": \"receipt sucessfully deleted\"}";
@@ -71,9 +60,21 @@ public class ReceiptDBRepository implements DBRepository {
 		return "{\"message\": \"receipt not found\"}";
 	}
 
-	private Receipt findReceipt(Long id) {
-		LOGGER.info("ReceiptDBRepository findTransaction");
-		return manager.find(Receipt.class, id);
+	@Override
+	public String add(String entity) {
+		LOGGER.info("ReceiptDBRepository createReceipt");
+		Receipt newReceipt = util.getObjectForJSON(entity, Receipt.class);
+		manager.persist(newReceipt);
+		return "{\"message\": \"receipt has been sucessfully added\"}";
+	}
+
+	@Override
+	public String getAllFor(long id) {
+		LOGGER.info("ReceiptDBRepository getAllFor");
+		Query query = manager.createQuery("Select a FROM receipt a where transaction.receipt.id = :id");
+		query.setParameter("id", id);
+		Collection<Receipt> receipt = (Collection<Receipt>) query.getResultList();
+		return util.getJSONForObject(receipt);
 	}
 
 }

@@ -14,8 +14,7 @@ public class ReceiptService implements Service{
 
 	@Override
 	public String getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.getAll();
 	}
 
 	@Override
@@ -25,12 +24,12 @@ public class ReceiptService implements Service{
 
 	@Override
 	public String createEntity(String ent) {
-		return repo.create(ent);
+		return repo.add(ent);
 	}
 
 	@Override
 	public String removeEntity(Long id) {
-		return repo.delete(id);
+		return repo.remove(id);
 	}
 
 	@Override
