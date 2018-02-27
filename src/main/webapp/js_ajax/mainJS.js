@@ -1,16 +1,11 @@
 $(document).ready(function(){
-  $('#signOutDisplay').hide();
-  
-  
-  
+//  $('#signOutDisplay').hide();
+
 var $mainCustomerId=1;
  function get_mainCustomer(){
 	 
 	  $.get({url: "http://localhost:8080/boideployment/rest/customer/json/"+$mainCustomerId, success: function(result){
-	           $("#output").append("Output form Server ");
 	           console.log(result);
-
-
 	       }});
 	  }
 
@@ -40,9 +35,14 @@ var $mainCustomerId=1;
  function get_receipt(transactionID){
 	 
 	  $.get({url: "http://localhost:8080/boideployment/rest/receipt/json/"+transactionID, success: function(result){
-	           $("#output").append("Output form Server ");
+	          // full receipt
 	           console.log("reciept");
 	           console.log(result);
+	           
+	         //get each receipt item
+	           $.each(result.receiptItemsRefs,function(key,value){
+	        	   console.log(value.name);
+	        	   });
 
 
 	       }});
@@ -54,8 +54,8 @@ var $mainCustomerId=1;
  get_receipt(6);
  
  
-  $("#signOutButton").click(function(){
-    $('#signOutDisplay').show();
-  });
+//  $("#signOutButton").click(function(){
+//    $('#signOutDisplay').show();
+//  });
 
 });
