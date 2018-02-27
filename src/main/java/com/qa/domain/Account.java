@@ -30,7 +30,7 @@ public class Account implements DomainEntity {
 	private String type;
 	
 	@OneToMany(fetch=FetchType.EAGER)
-	@JoinColumn(name="idAcount")
+	@JoinColumn(name="idAccount")
 	private Set<Transaction> transRefs = new HashSet<>();
 	
 	@Column(name="idCustomer")

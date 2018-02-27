@@ -19,7 +19,7 @@ import com.qa.util.JSONUtil;
 
 @Transactional(SUPPORTS)
 @Default
-public class CustomerRepository implements Repository {
+public class CustomerDBRepository implements Repository {
 	
 	@Inject
 	private JSONUtil util;
@@ -27,7 +27,7 @@ public class CustomerRepository implements Repository {
 	@PersistenceContext(unitName = "primary")
 	private EntityManager manager;
 	
-	private static final Logger LOGGER = Logger.getLogger(CustomerRepository.class);
+	private static final Logger LOGGER = Logger.getLogger(CustomerDBRepository.class);
 	
 	private Customer findCustomer(Long id) {
 		LOGGER.info("CustomerRepository findCustomer");
