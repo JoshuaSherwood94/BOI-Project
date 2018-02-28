@@ -1,76 +1,146 @@
-<!--
-    JBoss, Home of Professional Open Source
-    Copyright 2015, Red Hat, Inc. and/or its affiliates, and individual
-    contributors by the @authors tag. See the copyright.txt in the
-    distribution for a full listing of individual contributors.
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
--->
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/mainCSS.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
-<script src="js_ajax/mainJS.js"></script>
+  <head>
+	 <title> The Receipt Book </title>
 
-<title>The Reciept Book</title>
-</head>
-<body>
-  <div class="container-fluid">
+   <meta charset="utf-8">
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="css/mainCSS.css">
+   <link rel="stylesheet" href="css/Body.css">
+   <link rel="stylesheet" href="css/Button.css">
+   <link rel="stylesheet" href="css/Scrollbox.css">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   <script src="js_ajax/mainJS.js"></script>
 
+  </head>
 
-<div  class="row">
-  <div class=" col-sm-11">
-    <div  id="signOutDisplay" class="alert alert-info alert-dismissible col-sm-6">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong>You are about to Sign Out of the Application</strong>
-    </div>
-  </div>
+  <body background="https://www.hdwallback.net/wp-content/uploads/2017/12/Adorable-HDQ-Backgrounds-of-Blue.jpg">
 
-<button type="button" id="signOutButton" class="btn btn-info col-sm-1">Sign Out <br><i class="material-icons">exit_to_app</i></button>
-</div>
-<div  class="row">
-<div  id="mainContent"class=" col-sm-11">
-  <div  class="row">
-    <button type="button" id="Account1" class="btn btn-info col-sm-1"> Account:<span id="accountNumber1">1</button>
-    <button type="button" id="Account2" class="btn btn-info col-sm-1"> Account:<span id="accountNumber2">2</button>
-    <button type="button" id="Account2" class="btn btn-info col-sm-1"> Account:<span id="accountNumber3">3</button>
-  </div>
+    <header class="container">
 
-  <div class="row">
+  		<img  class="img-fluid"  src="https://www.bankofireland.com/app/plugins/boi-components/Classes/../components/header/images/bank-of-ireland-logo-default.svg" alt="Bank of Ireland" title="Bank of Ireland" align="center" width="100%" height="250" alt ="Bank Logo" " >
+    </header>
 
-  </div>
-
-</div>
-</div>
-
-  
-
-
-    <div id="output">
-      <h1>Output</h1>
+  	<div align = "right">
+  	   <button type="button" class="btn btn-primary btn-lg" > Sign out </button>
     </div>
 
-    <div>
-    	<form id="receiptUpload" action="">
-    	<input type="file">
-    	</form>
-    </div>
+<div class="row"  id="customerName">
 
 </div>
-</body>
+
+    <div class="d1">
+      <div class="d2">
+        <div class="d3">
+          <div class="d3-2">
+            <row id="accountButtons">
+            </row>
+            <div class="d4" id="datatable"  >
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  	<div  class ="dbody1">
+
+  		<button type="button" class="btn btn-primary btn-lg" > Previous 10  </button>
+  		<button type="button" class="btn btn-primary btn-lg" > Next 10 </button>
+  		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myAcc">Add Account</button>
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myRep"> Add Receipt </button>
+      <div class="centerLeft">
+      <input type="text" class= "col-xs-2"  row= "2" id="Search" > </Input>
+      <button type="button" class="btn btn-primary btn-sm" > Search </button>
+    </div>
+    </div>
+
+
+    <div class="modal fade" id="myAcc" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+          	<button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Add Account </h4>
+          </div>
+          <div class="modal-body" align="left">
+            <div class="form-group">
+              <label for="AccNo">Account:</label>
+              <input type="text" class="form-control" id="AccNo">
+            </div>
+            <row>
+              <label for="Accdes">Decription:</label>
+              <textarea class="form-control" rows="5" id="Accdes"></textarea>
+            </row>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default btn-x2" data-dismiss="modal">Add Account</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="myRep" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+          	<button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Add Receipt</h4>
+          </div>
+          <div class="modal-body" align="left">
+            <div class="form-group">
+              <div>
+                <button type="button" class="btn btn-default btn-x2 " >Select a Receipt: <span class="glyphicon glyphicon-upload"></span> </button>
+              </div>
+        	     <row>
+                <label for="Accdes">Comment:</label>
+                <textarea class="form-control" rows="5" id="Accdes"></textarea>
+              </row>
+      	     </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-x2" data-dismiss="modal">Add Receipt</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+      <div class="modal fade" id="TransactionOne" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <row>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Transaction Details </h4>
+              </row>
+            </div>
+            <div class="modal-body">
+              <row>
+                <div align="left" id="transactionBody"  class = "container">
+
+
+                </div>
+                <div align="right" class = "container">
+
+                </div>
+              </row>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  </body>
 </html>

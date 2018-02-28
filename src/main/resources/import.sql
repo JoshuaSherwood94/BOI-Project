@@ -55,10 +55,7 @@ INSERT INTO receipt(path,text,Location,Transaction_id)VALUES ('not set','Station
 INSERT INTO receipt(path,text,Location,Transaction_id) VALUES('not set','Weekly Shop','Tesco Salford Quays',11);
 INSERT INTO receipt(path,text,Location,Transaction_id) VALUES('not set','Petrol','Esso, Ardwick Green',12);
 INSERT INTO receipt(path,text,Location,Transaction_id) VALUES('not set','Date Night','Nandos, The Lowry',13);
-INSERT INTO receipt(path,text,Location,Transaction_id) VALUES('not set','Coffee Top up','Costa, MediaCity',14);
-INSERT INTO receipt(path,text,Location,Transaction_id) VALUES('not set','Weekly Shop','Aldi, Arnadale',16);
-INSERT INTO receipt(path,text,Location,Transaction_id) VALUES('not set','Shoes for work','Sole Trader, MediaCity',19);
-INSERT INTO receipt(path,text,Location,Transaction_id) VALUES('not set','Work Clothes','Next, The Lowry',20);
+
 
 
 insert into RECEIPTITEMS (name, quantity ,price, receipt_id ) values('Meal Platter',1,21.45,5);

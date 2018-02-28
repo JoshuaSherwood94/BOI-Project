@@ -14,7 +14,7 @@ public class ReceiptItems implements DomainEntity{
 	@Size(max=100)
 	private int quantity;
 	@Size(max=1000)
-	private int price;
+	private double price;
 	@Size(max=45)
 	private String name;
 	
@@ -44,7 +44,7 @@ public class ReceiptItems implements DomainEntity{
 		this.quantity = quantity;
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
