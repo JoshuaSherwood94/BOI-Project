@@ -4,13 +4,12 @@ $(document).ready(function(){
 var $mainCustomerId=1;
 get_mainCustomer();
 get_mainCustomerAccTransacitons(1);
-get_receipt(6);
 
 function get_mainCustomer(){
 
 	  $.get({url: "http://localhost:8080/boideployment/rest/customer/json/"+$mainCustomerId, success: function(result){
-      //  console.log('full result');
-        //    console.log(result);
+        console.log('full result');
+        console.log(result);
 
             var heading='<h5 class="col-sm-4"">Profile of :'+ result.customerName+'<small><br>Email :  '+result.email+'</small></h5>';
             $('#customerName').append(heading);
@@ -19,7 +18,7 @@ function get_mainCustomer(){
 
  function get_mainCustomerAccTransacitons(account_id)
  {
-
+	
 	  $.get({url: "http://localhost:8080/boideployment/rest/account/json/"+$mainCustomerId, success: function(result)
 		  {
 		  //result is the overall returned object
@@ -35,11 +34,11 @@ function get_mainCustomer(){
               $('#datatable').append(heading);
             $.each(result,function(key,value){
              //console.log(value);
-             var $buttonString='<button  type="button" class="btn btn-info btn-default col-sm-2 myAccountBtn" data-value="'+value.id+'" >'+value.description+'<span id="ac1"> </span> </button>';
+             var $buttonString='<button  type="button" class="btn btn-info btn-default col-sm-3 myAccountBtn" data-value="'+value.id+'" >'+value.description+'<span id="ac1"> </span> </button>';
              $("#accountButtons").append($buttonString);
              });
 	           //get each transaction
-	           $.each(result[account_id].transRefs,function(key,value){
+	           $.each(result[account_id-1].transRefs,function(key,value){
                var $buttonString="";
                if(value.receipts.length>0)
                {
@@ -75,7 +74,7 @@ function get_mainCustomer(){
 
 	         //get each receipt item
 	           $.each(result.receiptItemsRefs,function(key,value){
-	        	   console.log(value.name);
+	        	   //console.log(value.name);
 
             var receiptItem= '<div class="row"><div class="col-sm-4">'+
                  '<label for="TransactionOne">Name: </label><span>'+value.name+'</span>'+
