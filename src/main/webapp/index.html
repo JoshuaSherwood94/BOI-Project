@@ -10,7 +10,7 @@
    <link rel="stylesheet" href="css/Body.css">
    <link rel="stylesheet" href="css/Button.css">
    <link rel="stylesheet" href="css/Scrollbox.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -22,7 +22,7 @@
   <body background="https://www.hdwallback.net/wp-content/uploads/2017/12/Adorable-HDQ-Backgrounds-of-Blue.jpg">
 
     <header class="container">
-  			
+
   		<img  class="img-fluid"  src="https://www.bankofireland.com/app/plugins/boi-components/Classes/../components/header/images/bank-of-ireland-logo-default.svg" alt="Bank of Ireland" title="Bank of Ireland" align="center" width="100%" height="250" alt ="Bank Logo" " >
     </header>
 
@@ -30,25 +30,18 @@
   	   <button type="button" class="btn btn-primary btn-lg" > Sign out </button>
     </div>
 
-    
+<div class="row"  id="customerName">
+
+</div>
+
     <div class="d1">
       <div class="d2">
         <div class="d3">
-           
-           <row>
-           <button type="button" class="btn btn-info btn-default col-sm-2" >Account 1 </button> 
-           <button type="button" class="btn btn-info btn-default col-sm-2" >Account 2 </button> 
-           <button type="button" class="btn btn-info btn-default col-sm-2" >Account 3 </button> 
-           </row>
-         
           <div class="d3-2">
+            <row id="accountButtons">
+            </row>
             <div class="d4" id="datatable"  >
-            <div class = "row dataHeader">
-            <span class = "col-sm-2"> Date:   </span>
-            <span class = "col-sm-4"> Description:</span>
-            <span class = "col-sm-2"> Total Amount:   </span>
-            <span class = "col-sm-2"> Receipt:</span>
-            </div>
+
             </div>
           </div>
         </div>
@@ -68,7 +61,7 @@
       <button type="button" class="btn btn-primary btn-sm" > Search </button>
     </div>
     </div>
-    
+
 
     <div class="modal fade" id="myAcc" role="dialog">
       <div class="modal-dialog modal-sm">
@@ -86,7 +79,7 @@
               <label for="Accdes">Decription:</label>
               <textarea class="form-control" rows="5" id="Accdes"></textarea>
             </row>
-          </div>  
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default btn-x2" data-dismiss="modal">Add Account</button>
@@ -102,7 +95,7 @@
             <h4 class="modal-title">Add Receipt</h4>
           </div>
           <div class="modal-body" align="left">
-            <div class="form-group">	
+            <div class="form-group">
               <div>
                 <button type="button" class="btn btn-default btn-x2 " >Select a Receipt: <span class="glyphicon glyphicon-upload"></span> </button>
               </div>
@@ -110,7 +103,7 @@
                 <label for="Accdes">Comment:</label>
                 <textarea class="form-control" rows="5" id="Accdes"></textarea>
               </row>
-      	     </div> 
+      	     </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-x2" data-dismiss="modal">Add Receipt</button>
@@ -120,7 +113,7 @@
       </div>
     </div>
 
-    <div class="container">
+
       <div class="modal fade" id="TransactionOne" role="dialog">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
@@ -132,28 +125,12 @@
             </div>
             <div class="modal-body">
               <row>
-                <div align="left"  class = "container">
-                  <div>
-                    <label for="TransactionOne">Date/Time:</label>
-                  </div>
-                  <div>
-                    <label for="TransactionOne">Description:</label>
-                  </div>
-                  <div>
-                    <label for="TransactionOne">Location:</label>
-                  </div>
-                  <div>
-                    <label for="TransactionOne">Amount of Items:</label>
-                  </div>
-                  <div>
-                    <label for="TransactionOne">Unit Price:</label>
-                  </div> 
-                  <div>
-                    <label for="TransactionOne">Total Amount:</label>
-                  </div>
+                <div align="left" id="transactionBody"  class = "container">
+
+
                 </div>
                 <div align="right" class = "container">
-                  
+
                 </div>
               </row>
             </div>
@@ -163,6 +140,7 @@
           </div>
         </div>
       </div>
-    </div>
+
+
   </body>
 </html>

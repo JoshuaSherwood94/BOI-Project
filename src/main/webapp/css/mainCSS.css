@@ -25,3 +25,24 @@ body
   padding-top: 5px;
   padding-bottom: 5px;
 }
+
+
+label{
+  margin-right: 5px;
+}
+
+#transactionBody{
+  max-height: 250px;
+  overflow-y: scroll;
+}
+
+.myAccountBtn{
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+
+#customerName{
+  padding-left: 40px;
+  color: white;
+}
